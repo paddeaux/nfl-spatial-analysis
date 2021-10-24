@@ -12,6 +12,8 @@ The primary coding language for acquiring and cleaning the data is R. Using the 
 
 In order to accurately locate each game a lookup table was constructed using data from Wikpedia detailing the home stadium locations of all franchises in the NFL since 1966. By creating a unique `loc_ID` to represent each home stadium in a given year, location data for each stadium was joined on to the schedule data. 
 
+### Data Description
+
 The resulting table details every scheduled NFL game from 1966 until the 2020/2021 season, indicating the following variables:
 
 * `game_ID` - Unique game ID representing each game
