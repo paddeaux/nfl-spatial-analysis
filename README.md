@@ -33,3 +33,8 @@ The resulting table details every scheduled NFL game from 1966 until the 2020/20
 * `location` - Game location
 * `geometry` - Point location provided in EPSG:4326
 
+### Questions we want answered
+
+1)  Why the distance travelled by teams has increased over time?
+2)  Is there a relationship between team performance and travel schedule?
+3)  Are there trends based on geographic location?
