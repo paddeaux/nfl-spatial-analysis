@@ -17,6 +17,8 @@ An issue I encountered late in the data collection stage was the realization tha
 ## To Do:
 * Account for the two separate NFL and AFL leagues from 1966 until 1969
 * Create summaries for all franchises detailing their wins, losses, general performance along with the total distance they travelled that season
+* Update locations for cases such as the Buffalo Bills playing games annually in Toronto
+
 
 ### Data Description
 
