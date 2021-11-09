@@ -15,12 +15,17 @@ In order to accurately locate each game a lookup table was constructed using dat
 An issue I encountered late in the data collection stage was the realization that from 1966 - 1969 PFDB lists the NFL and AFL league schedules in different pages as they were seperate leagues at the time.
 
 ## To Do:
-* Account for the two separate NFL and AFL leagues from 1966 until 1969
-* Create summaries for all franchises detailing their wins, losses, general performance along with the total distance they travelled that season
+* ~~Account for the two separate NFL and AFL leagues from 1966 until 1969~~
+* Create summaries for all franchises detailing their wins, losses, general performance along with the total distance they travelled that season:
+  * The summary for distance currently assumes that the team will travel directly from the location of their previous away game to the location of their next away game (if applicable.
+  * In practice teams will generally fly home immediately from an away game, training at home before flying to the location of their next game, if it is not a home game.
+  * Will need to factor this in for calculation of distance between games. It should include the distance travelled home just before travelling for another away game.
 * Update locations for cases such as the Buffalo Bills playing games annually in Toronto
+* Update locations for international games
+* 
 
 
-### Data Description
+## Data Description
 
 The resulting table details every scheduled NFL game from 1966 until the 2020/2021 season, indicating the following variables:
 
