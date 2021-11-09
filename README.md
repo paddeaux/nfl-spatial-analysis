@@ -22,7 +22,6 @@ An issue I encountered late in the data collection stage was the realization tha
   * Will need to factor this in for calculation of distance between games. It should include the distance travelled home just before travelling for another away game.
 * Update locations for cases such as the Buffalo Bills playing games annually in Toronto
 * Update locations for international games
-* 
 
 
 ## Data Description
