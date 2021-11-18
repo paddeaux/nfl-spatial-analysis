@@ -188,4 +188,43 @@ nfl_sf <- df5 %>%
   mutate(game_ts=as.character(game_ts), home= ifelse(home=="0", "W", ifelse(home=="1", "L", "N"))) %>%
   select(c("game_ID","game_ts", "season", "day", "wk", "home", "winner", "pts_w", "yds_w", "tow", "loser", "pts_l", "yds_l", "tol", "stadium", "location","loc_ID","lat","long", "geometry"))
 
-st_write(nfl_sf, "nfl_sf_schedule.shp", driver="ESRI Shapefile", append=FALSE)
+int_games <- as_tibble(read.csv("int_games.csv"))
+names(int_games)[1] <- "year"
+
+#sf_nfl <- sf_nfl %>% mutate(game_ts = as.POSIXct(game_ts)) 
+
+x_date <- int_games$date
+x_winner <- int_games$winner
+x_loser <- int_games$loser
+
+df <- data.frame()
+
+for(i in 1:nrow(int_games)) {
+  current <- data.frame()
+  
+  x_date <- int_games$date[i]
+  x_winner <- int_games$winner[i]
+  x_loser <- int_games$loser[i]
+  
+  current <- nfl_sf %>% filter(date(game_ts)==x_date & winner==x_winner & loser==x_loser)
+  df <- rbind(df, current)
+}
+
+int_ids <- cbind(int_games, df$game_ID)# %>% select(c(df$game_ID, long, lat, stadium, city))
+names(int_ids)[10] <- "game_ID"
+
+int_join <- int_ids %>% select(c(game_ID, stadium, city, long, lat))
+
+nfl_sf_int <- full_join(nfl_sf, int_join, by="game_ID")
+
+nfl_sf_int <- nfl_sf_int %>% mutate(
+  stadium.x = ifelse(is.na(stadium.y), stadium.x, stadium.y),
+  location = ifelse(is.na(city), location, city),
+  lat.x = ifelse(is.na(lat.y), lat.x, lat.y),
+  long.x = ifelse(is.na(long.y), long.x, long.y),
+  loc_ID = "INT"
+)
+
+nfl_sf_output <- nfl_sf_int %>% rename(stadium=stadium.x, lat=lat.x, long=long.x) %>% st_as_sf(coords=c("long","lat"), crs=4326, remove=FALSE) %>% select(-c(stadium.y, city, long.y, lat.y))
+
+st_write(nfl_sf_output, "nfl_sf_schedule.shp", driver="ESRI Shapefile", append=FALSE)
