@@ -21,7 +21,7 @@ An issue I encountered late in the data collection stage was the realization tha
   * In practice teams will generally fly home immediately from an away game, training at home before flying to the location of their next game, if it is not a home game.
   * Will need to factor this in for calculation of distance between games. It should include the distance travelled home just before travelling for another away game.
 * Update locations for cases such as the Buffalo Bills playing games annually in Toronto
-* Update locations for international games
+* ~~Update locations for international games~~
 
 
 ## Data Description
